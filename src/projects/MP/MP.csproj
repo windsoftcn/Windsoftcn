@@ -7,8 +7,18 @@
 
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Data\Entities\EntityTypeConfigurations\" />
+    <Folder Include="Data\Management\" />
+    <Folder Include="Models\AccountViewModels\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="新文件夹\" />
   </ItemGroup>
 
 </Project>
