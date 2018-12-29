@@ -16,9 +16,13 @@
   <ItemGroup>
     <Folder Include="Data\Entities\EntityTypeConfigurations\" />
     <Folder Include="Data\Management\" />
+    <Folder Include="Middleware\Extensions\" />
+    <Folder Include="Middleware\Internals\" />
     <Folder Include="Models\AccountViewModels\" />
     <Folder Include="Extensions\" />
-    <Folder Include="新文件夹\" />
+    <Folder Include="FluentValidation\" />
+    <Folder Include="Specifications\" />
+    <Folder Include="ViewComponents\" />
   </ItemGroup>
 
 </Project>
