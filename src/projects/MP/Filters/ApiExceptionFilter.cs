@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using MP.Models;
@@ -11,11 +12,27 @@ namespace MP.Filters
 {
     public class ApiExceptionFilter : IExceptionFilter
     {
+        private readonly IHostingEnvironment env;
+
+        public ApiExceptionFilter(IHostingEnvironment env)
+        {
+            this.env = env;
+        }
+
         public void OnException(ExceptionContext context)
         {
             if(IsApiRoute(context.HttpContext))
             {
-                var apiError = ApiError.Create("Internal server error.", context.Exception.Message);
+                ApiError apiError = null;
+                if (env.IsDevelopment())
+                {
+                    apiError = ApiError.Create(context.Exception.Message, context.Exception.StackTrace);
+                }
+                else
+                {
+                    apiError = ApiError.Create("Internal server error.", context.Exception.Message);
+                }
+
                 context.Result = new ObjectResult(apiError)
                 {
                     StatusCode = StatusCodes.Status500InternalServerError

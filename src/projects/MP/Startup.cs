@@ -38,6 +38,7 @@ namespace MP
             services
                 .AddMvc(options =>
                 {
+                    // 添加 API 异常返回
                     options.Filters.Add<ApiExceptionFilter>();
                 })
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)

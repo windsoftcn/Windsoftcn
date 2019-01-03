@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using MP.Data.Entities;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using MP.Entities;
+using MP.Entities.EntityTypeConfigurations;
+using MP.Enumerations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +22,7 @@ namespace MP.Data
         {
             base.OnModelCreating(builder);
 
+            builder.ApplyConfiguration(new WeChatMiniAppConfiguration());
         }
     }
 }

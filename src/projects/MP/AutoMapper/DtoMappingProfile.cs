@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using MP.Api.Apps;
+using MP.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,7 @@ namespace MP.AutoMapper
     {
         public DtoMappingProfile()
         {
-            
+            CreateMap<WeChatMiniApp, WeChatMiniAppDto>();
         }
     }
 }
