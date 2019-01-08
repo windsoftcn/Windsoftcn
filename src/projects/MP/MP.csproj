@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="8.1.2" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="6.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Extensions.Caching.Redis" Version="2.2.0" />
@@ -20,7 +21,6 @@
     <Folder Include="Data\Management\" />
     <Folder Include="Middleware\Extensions\" />
     <Folder Include="Middleware\Internals\" />
-    <Folder Include="Services\Stats\" />
     <Folder Include="Specifications\" />
     <Folder Include="ViewComponents\" />
   </ItemGroup>

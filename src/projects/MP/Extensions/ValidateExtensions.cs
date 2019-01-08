@@ -16,6 +16,8 @@ namespace MP.Extensions
                 throw new ArgumentException($"{value} cannot be null or whitespace");
         }
 
+        public static bool IsNullOrWhitespace(this string value) => string.IsNullOrWhiteSpace(value);
+
         public static bool IsNull<T>(this T value) where T : class => value == null;
         
     }

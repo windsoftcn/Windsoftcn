@@ -24,7 +24,7 @@ namespace MP.Services
 
         public Task<List<WeChatApp>> GetAllAppsAsync()
         {
-            return cache.GetOrCreateAsync(Constants.AllWeChatMiniApps, entry => dbContext.WeChatApps.Where(x=>x.IsEnabled).ToListAsync());
+            return cache.GetOrCreateAsync(Constants.AllWeChatApps, entry => dbContext.WeChatApps.Where(x=>x.IsEnabled).ToListAsync());
         }
 
         public Task<WeChatApp> GetAppAsync(int id)
@@ -34,7 +34,11 @@ namespace MP.Services
 
         public Task<WeChatApp> GetAppAsync(string appId)
         {
-            return cache.GetOrCreateAsync(appId, entry => dbContext.WeChatApps.FirstOrDefaultAsync(app => app.AppId == appId));
+            return cache.GetOrCreateAsync(appId, entry =>
+            {
+                entry.SlidingExpiration = TimeSpan.FromMinutes(5);
+                return dbContext.WeChatApps.FirstOrDefaultAsync(app => app.AppId == appId);
+            });
         }
 
 
@@ -49,6 +53,21 @@ namespace MP.Services
         {
             dbContext.WeChatApps.Update(app);
             return dbContext.SaveChangesAsync();
+        }
+
+
+        public Task<HashSet<string>> GetAllAppIdsAsync()
+        { 
+            return cache.GetOrCreateAsync(Constants.AllWeChatAppIds, entry=>
+            {             
+                return Task.FromResult(dbContext.WeChatApps.Select(x => x.AppId).ToHashSet());
+            });
+        }
+        
+        public async Task<bool> ContainsAppId(string appId)
+        {
+            var appIds = await GetAllAppIdsAsync();
+            return appIds.Contains(appId);
         }
     }
 }

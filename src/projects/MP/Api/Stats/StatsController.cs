@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using MP.Extensions;
+using MP.MediatR.Events;
+using MP.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,31 +13,56 @@ namespace MP.Api.Stats
     [Route("api/[controller]")]
     public class StatsController : RootController
     {
-        public StatsController()
-        {
+        private readonly WeChatAppService appService;
+        private readonly IMediator mediator;
 
+        public StatsController(WeChatAppService appService,
+            IMediator mediator)
+        {
+            this.appService = appService ?? throw new ArgumentNullException(nameof(appService));
+            this.mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
 
         [HttpGet("startup")]
         public async Task<IActionResult> Startup(string appId, string userId, string channelId)
         {
-            // 添加到Redis 队列
+            appId.CheckNull();
+            userId.CheckNull();
+            
+            if (channelId.IsNullOrWhitespace())
+            {
+                channelId = Constants.DefaultChannel;
+            }
 
+            if (!(await appService.ContainsAppId(appId)))
+            {
+                throw new ArgumentNullException(nameof(appId));
+            }
+
+            // 通知后台处理
+            await mediator.Publish(new WeChatAppStartupEvent(appId, userId, channelId));
 
             return Ok("success");
         }
-
-        [HttpGet("test")]
-        public IActionResult Test()
+         
+   
+        // 跳转
+        [HttpGet("goto")]
+        public async Task<IActionResult> GoTo(string fromAppId, string gotoAppId)
         {
-            var message = new { Id = Guid.NewGuid(), Message = "test OK" };
-            return Ok(message);
+            // todo ..
+            return Ok("success");
         }
 
-        [HttpGet("error")]
-        public IActionResult Error()
+
+        // 点击 
+        [HttpGet("tap")]
+        public async Task<IActionResult> Tap(string appId, string item)
         {
-            throw new ArgumentException();
+            // todo
+            return Ok("success");
         }
+
+        
     }
 }

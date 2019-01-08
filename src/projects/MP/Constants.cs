@@ -9,7 +9,11 @@ namespace MP
     {
         public const string ProjectName = "MP";
 
-        public const string AllWeChatMiniApps = nameof(AllWeChatMiniApps);
+        public const string AllWeChatApps = nameof(AllWeChatApps);
+
+        public const string AllWeChatAppIds = nameof(AllWeChatAppIds);
+
+        public const string DefaultChannel = "default";
         
     }
 }
