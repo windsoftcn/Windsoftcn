@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 
 namespace MP.Services.Providers
 {
-    public class IRedisProvider
+    public interface IRedisProvider
     {
+        
     }
 }

@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 
 namespace MP.Services.Providers
 {
-    public class IRandomStringProvider
+    public interface IRandomStringProvider
     {
+        string RandomString();
     }
 }

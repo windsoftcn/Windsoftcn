@@ -1,0 +1,26 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/tools/tools",
+    "pages/games/games"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ffcc51",
+    "navigationBarTitleText": "宝玩趣盒",
+    "navigationBarTextStyle": "black"
+  }, 
+  "navigateToMiniProgramAppIdList": [
+    "wxb935bc1925fb7b47",
+    "wxd7273fe471076d97",
+    "wx9ffa84a729e985f4",
+    "wx8a5f4bd354abc0cb",
+    "wx341ae795fca23c0a",
+    "wx8c286e1ec93c855c",
+    "wx29293da60bb18815",
+    "wx2f9bcbed34f8a12e",
+    "wxd34ed6a0e76f9486",
+    "wx4588a99cc0a9ec73"
+  ]
+}

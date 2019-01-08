@@ -1,0 +1,43 @@
+.app-card-sm {
+  height: 240rpx;
+  width: 180rpx;
+}
+
+.app-img-sm {
+  width: 140rpx;
+  height: 140rpx;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.app-name-sm {
+  display: block;
+  line-height: 32rpx;
+  padding: 5rpx 0;
+  font-size: 28rpx;
+  color: #333;
+  text-align: center;
+}
+
+.text-light {
+  display: block;
+  text-align: center;
+  line-height: 32rpx;
+  padding: 5rpx 0;
+  font-size: 24rpx;
+  color: #aaa;
+}
+
+.btn-play {
+  border: 1px solid #4fc289;
+  color: #4fc289;
+  padding: 3px;
+  line-height: 16px;
+  font-size: 11px;
+  margin: 0 auto;
+  width: 60%;
+  border-radius: 20px;
+  background: #fff;
+  margin-top: 5px;
+}

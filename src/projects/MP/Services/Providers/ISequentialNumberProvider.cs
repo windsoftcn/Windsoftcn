@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MP.Services.Providers
 {
-    public class ISequentialNumberProvider
+    public interface ISequentialNumberProvider
     {
 
     }

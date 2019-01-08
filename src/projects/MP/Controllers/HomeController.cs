@@ -3,16 +3,34 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using MP.Entities;
 using MP.Models;
+using MP.Models.WeChatAppsViewModels;
+using MP.Services;
 
 namespace MP.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly WeChatAppService appService;
+        private readonly IMapper mapper;
+
+        public HomeController(WeChatAppService appService,
+            IMapper mapper)
         {
-            return View();
+            this.appService = appService ?? throw new ArgumentNullException(nameof(appService));
+            this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var apps = await appService.GetAllAppsAsync();
+
+            List<WeChatAppViewModel> appViewModels = mapper.Map<List<WeChatApp>, List<WeChatAppViewModel>>(apps);
+
+            return View(appViewModels);
         }
 
         public IActionResult Privacy()

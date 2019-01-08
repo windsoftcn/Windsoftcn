@@ -1,0 +1,27 @@
+.detail {
+    padding: 24rpx 40rpx;
+}
+
+.detail .h1 {
+    height: 64rpx;
+    line-height: 64rpx;
+    font-size: 32rpx;
+    color: #333;
+    margin-bottom: 20rpx;
+}
+
+.detail .p {
+    margin-bottom: 12rpx;
+    line-height: 52rpx;
+    color: #666;
+}
+
+.detail .p .name {
+    margin-right: 50rpx;
+}
+
+.icon {
+    width: 50rpx;
+    height: 50rpx;
+    vertical-align: middle;
+}

@@ -1,0 +1,26 @@
+<import src="/templates/app-card-sm/app-card-sm.wxml" />
+<!--index.wxml-->
+<view class="container pt-2">
+  <!-- <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view> -->
+  <view wx:if="{{isApple}}">
+    <text>(⊙o⊙)？,程序暂时无法支持iOS平台...</text>
+  </view>
+  <scroll-view wx:else>
+    <view class="app-group ">
+      <text class='group-header '>精品推荐</text>
+      <template is="app-card-sm" wx:key="appId" wx:for="{{bestApps}}" data="{{...item}}"></template>
+
+      <text class='group-header'>益智游戏</text>
+      <template is="app-card-sm" wx:key="appId" wx:for="{{gameApps}}" data="{{...item}}"></template> 
+    </view>
+  </scroll-view>
+</view>

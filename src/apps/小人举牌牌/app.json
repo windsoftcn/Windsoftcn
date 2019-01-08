@@ -1,0 +1,13 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/help/index",
+        "pages/more/index"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#87CEFA",
+        "navigationBarTitleText": "小人举牌",
+        "navigationBarTextStyle": "white"
+    }
+}

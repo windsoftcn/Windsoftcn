@@ -1,0 +1,13 @@
+<template name="app-card-sm">
+  <navigator target="miniProgram" app-id="{{appId}}" hover-class='navigator-hover'>
+    <view class='app-card-sm'>
+      <!-- <image class='app-img' src="{{AppIconUrl}}"></image>
+      <text class='app-name'>{{appName}}</text>
+      <text class='text-light'>{{playedNumber}}人在玩</text> -->
+      <image class='app-img-sm' src="{{appIcon}}"></image>
+      <text class='app-name-sm'>{{appName.length <= 6 ? appName : aliasName}}</text>
+      <text class='text-light'>{{playedNumber}}</text>
+      <!-- <button class='btn-play'>开始旅程</button> -->
+    </view>
+  </navigator>
+</template>

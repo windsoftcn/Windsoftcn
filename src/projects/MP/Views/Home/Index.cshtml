@@ -1,8 +1,19 @@
-﻿@{
+@model IEnumerable<MP.Models.WeChatAppsViewModels.WeChatAppViewModel>
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+    <div class="row">
+
+        @foreach (var item in Model)
+        {
+            <div class="card border-0 col-2">
+                <img class="card-img-top" src="@item.IconUrl" alt="@(item.AppName)" title="@item.AppName">
+                <div class="card-body text-center">
+                    <span class="">@(item.AppName.Length > 6 ? item.AppName : item.AppAlias)</span>
+                </div>
+            </div>
+        }
+    </div>
 </div>

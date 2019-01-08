@@ -1,0 +1,7 @@
+<template name="app-card-lg">
+  <navigator  target="miniProgram" app-id="{{appId}}" hover-class='navigator-hover'>
+    <view class='app-card-lg shadow-sm'>  
+      <image class='app-img-lg' src="{{appBanner}}"></image>    
+    </view>
+  </navigator>
+</template>

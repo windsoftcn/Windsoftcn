@@ -1,0 +1,10 @@
+<view class="container">
+    <view class="listWrap">
+        <view bindtap="linkTap" class="linklist" data-appid="{{item.appid}}" data-url="{{item.linkurl}}" style="border-color:{{styleColor}}" wx:for="{{linkList}}" wx:key="k">
+            <image src="{{item.image}}"></image>
+            <view class="title">{{item.title}}</view>
+            <view class="content">{{item.desc}}</view>
+            <view class="viewbtn" style="border-color:{{styleColor}};color:{{styleColor}}">看看</view>
+        </view>
+    </view>
+</view>

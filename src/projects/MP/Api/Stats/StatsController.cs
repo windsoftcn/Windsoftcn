@@ -14,6 +14,15 @@ namespace MP.Api.Stats
 
         }
 
+        [HttpGet("startup")]
+        public async Task<IActionResult> Startup(string appId, string userId, string channelId)
+        {
+            // 添加到Redis 队列
+
+
+            return Ok("success");
+        }
+
         [HttpGet("test")]
         public IActionResult Test()
         {

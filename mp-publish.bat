@@ -1,0 +1,1 @@
+dotnet publish .\src\projects\MP\MP.csproj -c Release -o ..\...\..\..\..\releases\mp-release\

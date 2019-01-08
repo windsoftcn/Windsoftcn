@@ -23,7 +23,7 @@ namespace MP.Enumerations
         public override string ToString() => Name;
 
         public override int GetHashCode() => Id.GetHashCode();
-        
+
         public int CompareTo(object obj) => Id.CompareTo(((Enumeration)obj).Id);
 
         public override bool Equals(object obj)
@@ -36,7 +36,7 @@ namespace MP.Enumerations
 
             return isTypeMatch && isValueMatch;
         }
-
+        
         /* Static methods */
 
         public static IEnumerable<T> GetAll<T>() where T : Enumeration

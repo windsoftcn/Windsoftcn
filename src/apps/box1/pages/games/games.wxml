@@ -1,0 +1,37 @@
+<import src="/templates/app-card-sm/app-card-sm.wxml" />
+<import src="/templates/app-card-lg/app-card-lg.wxml" />
+<!--index.wxml-->
+<view class="container pt-2">
+  <!-- <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view> -->
+
+  <scroll-view>
+    <view class="app-group">
+      <text class='group-header'>精品推荐</text>
+      <template is="app-card-lg" />
+ 
+      <text class='group-header'>益智游戏</text>
+      <template is="app-card-sm" />
+      <template is="app-card-sm" />
+      <template is="app-card-sm" />
+      <template is="app-card-sm" />
+      <template is="app-card-sm" />
+      <template is="app-card-sm" />
+      <template is="app-card-sm" />
+      <template is="app-card-sm" />
+      <text class='group-header'>工具宝盒</text>
+      <template is="app-card-sm" />
+      <template is="app-card-sm" />
+      <template is="app-card-sm" />
+      <template is="app-card-sm" />
+    </view>
+  </scroll-view>
+</view>

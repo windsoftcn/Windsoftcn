@@ -1,0 +1,13 @@
+<view class="detail">
+    <view class="h1">使用说明如下：</view>
+    <view class="p">1.  点击 <image class="icon" src="../../image/suiji.png"></image> 图标可随机浏览个性标语；</view>
+    <view class="p">2. 点击 <image class="icon" src="../../image/huanren.png"></image> 图标可随机切换小人形象；</view>
+    <view class="p">3. 内容输入长度不得超过40个字符；</view>
+    <view class="p">4. 点击 <image class="icon" src="../../image/clear.png"></image> 图标，可清除输入内容，同时重新浏览个性标语；</view>
+    <view class="p">5. 点击 <image class="icon" src="../../image/text.png"></image> 图标，可挑选你喜欢的个性标语；</view>
+    <view class="p">6. 点击 <image class="icon" src="../../image/color.png"></image> 图标，可挑选你喜欢的背景颜色；</view>
+    <view class="p">7. 点击 <image class="icon" src="../../image/style.png"></image> 图标，可切换举牌小人的风格；</view>
+    <view class="p">8. 点击 <image class="icon" src="../../image/share2.png"></image> 图标，可将举牌小人分享给好友；</view>
+    <view class="p">9. 点击 <image class="icon" src="../../image/save.png"></image> 按钮后，长按图片即可选择保存到本地或直接发送给好友。</view>
+</view>
+<view class="copy"></view>

@@ -1,0 +1,118 @@
+﻿@model IEnumerable<MP.Models.WeChatAppsViewModels.WeChatAppViewModel>
+
+@{
+    ViewData["Title"] = "小程序列表";
+}
+<div class="row">
+    <div class="col-12 text-right">       
+        <a asp-action="Create"  class="btn btn-link"> <span class="oi oi-plus small"></span> 新增</a>
+    </div>
+</div>
+ 
+<table class="table table-bordered small">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AppId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Secret)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AppName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AppAlias)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IconUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CoverUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BannerUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QRUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShareUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tags)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Remark)
+            </th>         
+            <th>
+                @Html.DisplayNameFor(model => model.IsEnabled)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Secret)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppAlias)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IconUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CoverUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BannerUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QRUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShareUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tags)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Remark)
+            </td> 
+            <td>
+                @Html.DisplayFor(modelItem => item.IsEnabled)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

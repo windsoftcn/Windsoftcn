@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MP.Api.Apps
+namespace MP.Api.WeChatAuth
 {
-    public class WeChatMiniAppDto
+    public class WeChatMiniAppLoginDto
     {
-
     }
 }

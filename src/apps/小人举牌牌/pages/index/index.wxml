@@ -1,0 +1,133 @@
+<view class="container" style="background:{{colorPicker.color}}">
+  <view class="view">
+    <canvas canvasId="canvas" style="width:750rpx;height: 750rpx;"></canvas>
+    <canvas canvasId="canvasTemp" style="width:750rpx;height: 750rpx;position:absolute;left:-760rpx;top:0;"></canvas>
+    <view class="tool">
+      <button class="share" openType="share">
+        <image src="/image/share.png"></image>
+      </button>
+    </view>
+  </view>
+  <view class="operation">
+    <view class="input">
+      <textarea bindfocus="bindFocus" bindinput="bindInput" cursorSpacing="80" maxlength="40" placeholder="在这里输入文字，键盘选择换行后，小人也会换行，最多可输入40个字符" showConfirmBar="{{false}}" value="{{output}}"></textarea>
+    </view>
+  </view>
+  <view class="compWrap {{isShowCom?'slidup':''}}">
+    <scroll-view scrollY class="textList" scrollIntoView="into{{textIndex}}" wx:if="{{showPj==0}}">
+      <view class="textList-item" id="into{{index}}" wx:for="{{textList}}" wx:key="true">
+        <view bindtap="changeText" class="{{index==textIndex?'checked':''}}" data-index="{{index}}">{{item}}</view>
+      </view>
+    </scroll-view>
+    <scroll-view scrollX class="scrollView" wx:if="{{showPj==1}}">
+      <view class="color-set">
+        <view class="color-wrap">
+          <view bindtap="getColor" class="color" data-b="21" data-g="0" data-r="136" style="background:rgb(136,0,21);"></view>
+        </view>
+        <view class="color-wrap">
+          <view bindtap="getColor" class="color" data-b="36" data-g="28" data-r="237" style="background:rgb(237,28,36);"></view>
+        </view>
+        <view class="color-wrap">
+          <view bindtap="getColor" class="color" data-b="39" data-g="127" data-r="255" style="background:rgb(255,127,39);"></view>
+        </view>
+        <view class="color-wrap">
+          <view bindtap="getColor" class="color" data-b="0" data-g="242" data-r="255" style="background:rgb(255,242,0);"></view>
+        </view>
+        <view class="color-wrap">
+          <view bindtap="getColor" class="color" data-b="87" data-g="122" data-r="185" style="background:rgb(185,122,87);"></view>
+        </view>
+        <view class="color-wrap">
+          <view bindtap="getColor" class="color" data-b="201" data-g="174" data-r="255" style="background:rgb(255,174,201);"></view>
+        </view>
+        <view class="color-wrap">
+          <view bindtap="getColor" class="color" data-b="14" data-g="201" data-r="255" style="background:rgb(255,201,14);"></view>
+        </view>
+        <view class="color-wrap">
+          <view bindtap="getColor" class="color" data-b="176" data-g="228" data-r="239" style="background:rgb(239,228,176);"></view>
+        </view>
+        <view class="color-wrap">
+          <view bindtap="getColor" class="color" data-b="76" data-g="177" data-r="34" style="background:rgb(34,177,76);"></view>
+        </view>
+        <view class="color-wrap">
+          <view bindtap="getColor" class="color" data-b="232" data-g="162" data-r="0" style="background:rgb(0,162,232);"></view>
+        </view>
+        <view class="color-wrap">
+          <view bindtap="getColor" class="color" data-b="204" data-g="72" data-r="63" style="background:rgb(63,72,204);"></view>
+        </view>
+        <view class="color-wrap">
+          <view bindtap="getColor" class="color" data-b="164" data-g="73" data-r="163" style="background:rgb(163,73,164);"></view>
+        </view>
+        <view class="color-wrap">
+          <view bindtap="getColor" class="color" data-b="29" data-g="230" data-r="181" style="background:rgb(181,230,29);"></view>
+        </view>
+        <view class="color-wrap">
+          <view bindtap="getColor" class="color" data-b="234" data-g="217" data-r="153" style="background:rgb(153,217,234);"></view>
+        </view>
+        <view class="color-wrap">
+          <view bindtap="getColor" class="color" data-b="190" data-g="146" data-r="112" style="background:rgb(112,146,190);"></view>
+        </view>
+        <view class="color-wrap">
+          <view bindtap="getColor" class="color" data-b="231" data-g="191" data-r="200" style="background:rgb(200,191,231);"></view>
+        </view>
+      </view>
+    </scroll-view>
+    <scroll-view scrollX class="scrollView" wx:if="{{showPj==2}}">
+      <view class="swiper_warp" style="width:{{tplg1*19.5}}%">
+        <view class="swiper_item" data-from="2" hoverClass="touched" hoverStartTime="10" hoverStayTime="1000" wx:for="{{tplist_2}}" wx:key="{{index}}">
+          <view class="warpImg">
+            <image bindtap="changeType" class="item_img" data-type="{{item.type}}" mode="aspectFit" src="{{item.image}}"></image>
+            <text class="underline_2"></text>
+          </view>
+        </view>
+        <view class="swiper_item">
+          <view class="warpImg">
+            <image class="item_img" mode="aspectFit" src="../../image/more.png"></image>
+            <text class="underline_2"></text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <view class="bottomFix">
+    <view class="bottomSelect">
+      <view bindtap="bottomSelect" class="select {{item.isSelect?'active':''}}" data-id="{{item.id}}" wx:for="{{bottomSelect}}" wx:key="{{item.id}}">
+        <view class="selectWrap {{item.haveBorder?'borderRight':''}}">
+          <image src="{{item.isSelect?item.selectImage:item.image}}"></image>
+          <view class="fontWrap" wx:if="{{item.isSelect}}">
+            <text>{{item.text}}</text>
+            <icon class="underLine"></icon>
+          </view>
+        </view>
+        <icon class="u" wx:if="{{item.isSelect}}"></icon>
+      </view>
+      <navigator appId="wx3e13ab8d456383e4" openType="navigate" path="pages/index/index" target="miniProgram" version="release">
+        <view class="tiao1">
+          <image src="/image/circle.png"></image>
+          <text class="tiaoZ">宝盒</text>
+        </view>
+      </navigator>
+    </view>
+  </view>
+  <view class="btnView">
+    <view wx:if="{{!value}}">
+      <button bindtap="changeRandom">随机</button>
+    </view>
+    <view wx:else>
+      <button bindtap="clearValue">清空</button>
+    </view>
+    <view>
+      <button bindtap="changePeople">换人</button>
+    </view>
+    <view>
+      <button bindtap="saveImage" disabled="{{loading}}" loading="{{loading}}">保存</button>
+    </view>
+  </view>
+</view>
+<view class="advf">
+  <view class="adv">
+    <ad class="adcls" unitId="adunit-0f15686e8294489b"></ad>
+  </view>
+</view>
+<navigator appId="wx3e13ab8d456383e4" class="smallT" openType="navigate" path="pages/index/index" target="miniProgram" version="release">
+  <view class="shareT">趣玩宝盒</view>
+</navigator>

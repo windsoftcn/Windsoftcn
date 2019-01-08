@@ -8,11 +8,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MP.Models.WeChatAppsViewModels;
 
 namespace MP.Data
 {
     public class AppDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<WeChatApp> WeChatApps { get; set; }
+
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
 
@@ -24,5 +27,6 @@ namespace MP.Data
 
             builder.ApplyConfiguration(new WeChatMiniAppConfiguration());
         }
+ 
     }
 }

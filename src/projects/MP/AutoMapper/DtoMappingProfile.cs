@@ -12,7 +12,7 @@ namespace MP.AutoMapper
     {
         public DtoMappingProfile()
         {
-            CreateMap<WeChatMiniApp, WeChatMiniAppDto>();
+            CreateMap<WeChatApp, WeChatAppDto>();
         }
     }
 }

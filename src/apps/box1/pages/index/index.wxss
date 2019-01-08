@@ -1,0 +1,43 @@
+/**index.wxss**/
+
+@import "/templates/app-card-sm/app-card-sm.wxss";
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+.app-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.app-group .group-header {
+  margin:20rpx 30rpx;
+  text-indent: 15rpx;
+  width: 100%;
+  height: 32rpx;
+  line-height: 32rpx;  
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;  
+  border-left: 10rpx solid #ffcc51;  
+}

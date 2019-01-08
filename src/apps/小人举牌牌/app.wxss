@@ -1,0 +1,41 @@
+.smallT {
+    position: fixed;
+    top: 10vh;
+    right: 0;
+}
+
+.smallT .shareImg {
+    margin-right: 4px;
+    height: 80rpx;
+    width: 90rpx;
+    animation: share 1.2s linear infinite;
+}
+
+.smallT .shareT {
+    font-size: 28rpx;
+    position: fixed;
+    right: 0;
+    border-top-left-radius: 60rpx;
+    border-bottom-left-radius: 60rpx;
+    height: 60rpx;
+    width: 150rpx;
+    background: red;
+    color: white;
+    line-height: 60rpx;
+    z-index: 999;
+    text-align: center;
+}
+
+.friendT {
+    font-size: 28rpx;
+    position: fixed;
+    top: 50vh;
+    left: 0;
+    color: white;
+    background: rgba(254,153,203,1);
+    height: 50rpx;
+    width: 120rpx;
+    border-top-right-radius: 60rpx;
+    border-bottom-right-radius: 60rpx;
+    line-height: 50rpx;
+}
