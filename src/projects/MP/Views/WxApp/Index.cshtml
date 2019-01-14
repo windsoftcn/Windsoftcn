@@ -1,0 +1,144 @@
+﻿@model IEnumerable<MP.Models.WxAppViewModels.WxAppViewModel>
+
+@{
+    ViewData["Title"] = "小程序列表";
+}
+
+<style>
+    .table > tbody > tr > td {
+        vertical-align: middle;
+        padding: 5px;
+    }    
+</style>
+
+<div class="row">
+    <div class="col-12 text-right">       
+        <a asp-action="Create"  class="btn btn-link"> <span class="oi oi-plus small"></span> 新增</a>
+    </div>
+</div>
+ 
+<table class="table table-bordered small text-center">
+    <thead class="">
+        <tr>
+            <th>产品</th>
+            <th>
+                @Html.DisplayNameFor(model => model.AppId)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Secret)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.AppName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AppAlias)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IconUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CoverUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BannerUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QRUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShareUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tags)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Remark)
+            </th>         
+            <th>
+                @Html.DisplayNameFor(model => model.Enabled)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <img class="img-fluid" src="@item.IconUrl" alt="@item.AppName" title="@item.AppName" width="60" height="60" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppId)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Secret)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.AppName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppAlias)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @if (!String.IsNullOrWhiteSpace(item.IconUrl))
+                {
+                <a href="@item.IconUrl" class="nav-link" target="_blank"><span class="oi oi-link-intact small text-secondary"></span> 图片链接</a>
+                }
+            </td>
+            <td>
+                @if (!String.IsNullOrWhiteSpace(item.CoverUrl))
+                {
+                    <a href="@item.CoverUrl" class="nav-link" target="_blank"><span class="oi oi-link-intact small text-secondary"></span> 图片链接</a>
+                }
+            </td>
+            <td>
+                @if (!String.IsNullOrWhiteSpace(item.BannerUrl))
+                {
+                    <a href="@item.BannerUrl" class="nav-link" target="_blank"><span class="oi oi-link-intact small text-secondary"></span> 图片链接</a>
+                }
+            </td>
+            <td>
+                @if (!String.IsNullOrWhiteSpace(item.QRUrl))
+                {
+                    <a href="@item.QRUrl" class="nav-link" target="_blank"><span class="oi oi-link-intact small text-secondary"></span> 图片链接</a>
+                }
+            </td>
+            <td>
+                @if (!String.IsNullOrWhiteSpace(item.ShareUrl))
+                {
+                    <a href="@item.ShareUrl" class="nav-link" target="_blank"><span class="oi oi-link-intact small text-secondary"></span> 图片链接</a>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tags)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Remark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Enabled)
+            </td>
+            <td>
+                <a asp-controller="WxApp" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

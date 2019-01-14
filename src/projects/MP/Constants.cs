@@ -9,11 +9,14 @@ namespace MP
     {
         public const string ProjectName = "MP";
 
-        public const string AllWeChatApps = nameof(AllWeChatApps);
+        public const string AllWxApps = nameof(AllWxApps);
 
-        public const string AllWeChatAppIds = nameof(AllWeChatAppIds);
+        public const string AllWxAppIds = nameof(AllWxAppIds);
 
         public const string DefaultChannel = "default";
-        
+
+        public const string AllWxBoxes = nameof(AllWxBoxes);
+
+        public const string WxBoxDetails = nameof(WxBoxDetails);
     }
 }

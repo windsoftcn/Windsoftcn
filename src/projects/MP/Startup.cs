@@ -47,7 +47,7 @@ namespace MP
 
             services.AddOptions();
             services.AddHttpClient();
-            services.AddHttpClient<WeChatAuthHttpClient>();
+            services.AddHttpClient<WxAuthHttpClient>();
             services.AddAutoMapper();
 
             services.AddMemoryCache();
@@ -79,9 +79,8 @@ namespace MP
                 o.DefaultSignInScheme = IdentityConstants.ExternalScheme;
             }).AddIdentityCookies(o => { });
 
-
-            services.AddTransient<WeChatAppService>();
-
+            services.AddTransient<WxAppService>();
+            services.AddTransient<WxBoxService>();
 
             services
                 .AddMvc(options =>

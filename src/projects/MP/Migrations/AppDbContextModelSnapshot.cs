@@ -19,6 +19,31 @@ namespace MP.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("MP.Entities.AppOwner", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Enabled")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValue(true);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(128);
+
+                    b.Property<string>("Phone")
+                        .HasMaxLength(128);
+
+                    b.Property<string>("Remark")
+                        .HasMaxLength(1024);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AppOwners");
+                });
+
             modelBuilder.Entity("MP.Entities.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
@@ -70,7 +95,7 @@ namespace MP.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("MP.Entities.WeChatApp", b =>
+            modelBuilder.Entity("MP.Entities.WxApp", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -82,7 +107,10 @@ namespace MP.Migrations
                     b.Property<string>("AppId");
 
                     b.Property<string>("AppName")
+                        .IsRequired()
                         .HasMaxLength(64);
+
+                    b.Property<int?>("AppOwnerId");
 
                     b.Property<int?>("AppType");
 
@@ -100,10 +128,12 @@ namespace MP.Migrations
                     b.Property<string>("Email")
                         .HasMaxLength(64);
 
+                    b.Property<bool>("Enabled")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValue(true);
+
                     b.Property<string>("IconUrl")
                         .HasMaxLength(256);
-
-                    b.Property<bool>("IsEnabled");
 
                     b.Property<string>("QRUrl")
                         .HasMaxLength(256);
@@ -123,13 +153,66 @@ namespace MP.Migrations
                     b.Property<string>("Title")
                         .HasMaxLength(256);
 
+                    b.Property<int?>("WeChatBoxId");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AppId")
                         .IsUnique()
                         .HasFilter("[AppId] IS NOT NULL");
 
-                    b.ToTable("WeChatApps");
+                    b.HasIndex("AppOwnerId");
+
+                    b.HasIndex("WeChatBoxId");
+
+                    b.ToTable("WxApps");
+                });
+
+            modelBuilder.Entity("MP.Entities.WxBox", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(128);
+
+                    b.Property<string>("Remark")
+                        .HasMaxLength(1024);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("WxBoxes");
+                });
+
+            modelBuilder.Entity("MP.Entities.WxBoxApp", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AppId");
+
+                    b.Property<int?>("AppNavigationType");
+
+                    b.Property<int?>("AppShowType");
+
+                    b.Property<int>("BoxId");
+
+                    b.Property<bool>("Enabled");
+
+                    b.Property<int>("Position")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValue(1);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppId");
+
+                    b.HasIndex("BoxId");
+
+                    b.ToTable("WxBoxApps");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -240,6 +323,30 @@ namespace MP.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("MP.Entities.WxApp", b =>
+                {
+                    b.HasOne("MP.Entities.AppOwner", "AppOwner")
+                        .WithMany("WeChatApps")
+                        .HasForeignKey("AppOwnerId");
+
+                    b.HasOne("MP.Entities.WxBox", "WeChatBox")
+                        .WithMany()
+                        .HasForeignKey("WeChatBoxId");
+                });
+
+            modelBuilder.Entity("MP.Entities.WxBoxApp", b =>
+                {
+                    b.HasOne("MP.Entities.WxApp", "WxApp")
+                        .WithMany("WeChatBoxApps")
+                        .HasForeignKey("AppId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("MP.Entities.WxBox", "WxBox")
+                        .WithMany("WeChatBoxApps")
+                        .HasForeignKey("BoxId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

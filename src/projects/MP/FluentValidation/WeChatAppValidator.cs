@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MP.FluentValidation
 {
-    public class WeChatAppValidator : AbstractValidator<WeChatApp>
+    public class WeChatAppValidator : AbstractValidator<WxApp>
     {
         public WeChatAppValidator()
         {

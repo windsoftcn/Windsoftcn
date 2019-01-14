@@ -1,0 +1,13 @@
+<template name="app-card-md">
+  <navigator  target="miniProgram" app-id="wxcae0990426024d20" hover-class='navigator-hover'>
+    <view class='app-card'>
+      <!-- <image class='app-img' src="{{AppIconUrl}}"></image>
+      <text class='app-name'>{{appName}}</text>
+      <text class='text-light'>{{playedNumber}}人在玩</text> -->
+      <image class='app-img' src="https://xcxtask.715083.com/upload/a73bafbe-52da-49ee-9525-850f0b070ebc.png"></image>
+      <text class='app-name'>小程序的名称</text>
+      <text class='text-light'>30万人在玩</text>
+      <button class='btn-play'>开始旅程</button>
+    </view>
+  </navigator>
+</template>

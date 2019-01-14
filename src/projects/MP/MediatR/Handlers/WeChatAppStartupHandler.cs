@@ -19,8 +19,8 @@ namespace MP.MediatR.Handlers
         }
 
         public Task Handle(WeChatAppStartupEvent notification, CancellationToken cancellationToken)
-        {               
-            
+        {
+            return Task.CompletedTask;
         }
     }
 }

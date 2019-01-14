@@ -8,13 +8,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MP.Models.WeChatAppsViewModels;
+using MP.Models.WxAppViewModels;
 
 namespace MP.Data
 {
     public class AppDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<WeChatApp> WeChatApps { get; set; }
+        public DbSet<WxBox> WxBoxes { get; set; }
+        
+        public DbSet<WxApp> WxApps { get; set; }
+
+        public DbSet<AppOwner> AppOwners { get; set; }
+
+        public DbSet<WxBoxApp> WxBoxApps { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -25,7 +31,13 @@ namespace MP.Data
         {
             base.OnModelCreating(builder);
 
-            builder.ApplyConfiguration(new WeChatMiniAppConfiguration());
+            builder.ApplyConfiguration(new WxAppConfiguration());
+
+            builder.ApplyConfiguration(new AppOwnerConfiguration());
+
+            builder.ApplyConfiguration(new WxBoxConfiguration());
+
+            builder.ApplyConfiguration(new WxBoxAppConfiguration());
         }
  
     }

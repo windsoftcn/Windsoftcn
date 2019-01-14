@@ -1,0 +1,64 @@
+﻿@model MP.Models.WxBoxViewModels.BoxDetailViewModel
+@inject MP.Services.WxBoxService boxService
+@{
+    ViewData["Title"] = "BoxDetails";
+
+    var allBoxes = await boxService.GetAllBoxes();
+}
+  
+<div class="row my-2">
+    <div class="input-group col-md-3 col-12">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">盒子配置</label>
+        </div>
+        <select class="custom-select text-center" id="inputGroupSelect01">
+            @foreach (var box in allBoxes)
+            {
+                if (box.Id == Model.BoxId)
+                {
+                    <option value="@box.Id" selected>@box.Name</option>
+                }
+                else
+                {
+                    <option value="@box.Id">@box.Name</option>
+                }
+            }
+        </select>
+    </div>
+</div>
+
+<table class="table table-sm table-bordered small">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>图标</th>
+            <th>名称</th>
+            <th>AppId</th>
+            <th>展示类型</th>
+            <th>跳转方式</th>
+            <th>排序</th>
+            <th>状态</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var boxApp in Model.WxBoxApps)
+        {
+            <tr>
+                <td>@boxApp.Id</td>
+                <td><img class="img-fluid" src="@boxApp.WxApp.IconUrl" alt="@boxApp.WxApp.AppName" title="@boxApp.WxApp.AppName" width="60" height="60" /></td>
+                <td>@boxApp.WxApp.AppName</td>
+                <td>@boxApp.WxApp.AppId</td>
+                <td>@boxApp.AppShowType.Name</td>
+                <td>@boxApp.AppNavigationType.Name</td>
+                <td>@boxApp.Position</td>
+                <td>@(boxApp.Enabled ? "已启用" : "已停用")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts{ 
+    <script>
+
+    </script>
+}

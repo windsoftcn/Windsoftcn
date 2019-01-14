@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using MP.Entities;
-using MP.Models.WeChatAppsViewModels;
+using MP.Models.WxAppViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +12,11 @@ namespace MP.AutoMapper
     {
         public ViewModelMappingProfile()
         {
-            CreateMap<WeChatAppCreateViewModel, WeChatApp>();
+            CreateMap<WxAppCreateViewModel, WxApp>();
 
-            CreateMap<WeChatAppViewModel, WeChatApp>();
+            CreateMap<WxAppViewModel, WxApp>();
 
-            CreateMap<WeChatApp, WeChatAppViewModel>();
+            CreateMap<WxApp, WxAppViewModel>();
         }
     }
 }

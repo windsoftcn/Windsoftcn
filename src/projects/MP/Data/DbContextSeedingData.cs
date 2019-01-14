@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using MP.Entities;
+using MP.Enumerations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +44,34 @@ namespace MP.Data
                     await userManager.AddPasswordAsync(user, password);
                     await userManager.AddToRoleAsync(user, roleNames[0]);
                 }
+            }
+
+            // 添加测试Box
+            if(!await dbContext.WxBoxes.AnyAsync())
+            {                
+                var box = new WxBox
+                {
+                    Name = "Test",
+                    Remark = "测试数据"                   
+                };
+                 
+                dbContext.WxBoxes.Add(box);
+                await dbContext.SaveChangesAsync();
+
+                var wxApp = await dbContext.WxApps.FirstOrDefaultAsync();
+
+                if (box.Id > 0 && wxApp != null)
+                {
+                    dbContext.WxBoxApps.Add(new WxBoxApp
+                    {
+                        BoxId =box.Id,
+                        AppId = wxApp.Id,
+                        AppShowType = AppShowType.小图标,
+                        AppNavigationType = AppNavigationType.直跳
+                    });
+                    await dbContext.SaveChangesAsync();
+                }
+                
             }
         }
     }

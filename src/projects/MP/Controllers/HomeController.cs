@@ -7,17 +7,17 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using MP.Entities;
 using MP.Models;
-using MP.Models.WeChatAppsViewModels;
+using MP.Models.WxAppViewModels;
 using MP.Services;
 
 namespace MP.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly WeChatAppService appService;
+        private readonly WxAppService appService;
         private readonly IMapper mapper;
 
-        public HomeController(WeChatAppService appService,
+        public HomeController(WxAppService appService,
             IMapper mapper)
         {
             this.appService = appService ?? throw new ArgumentNullException(nameof(appService));
@@ -28,7 +28,7 @@ namespace MP.Controllers
         {
             var apps = await appService.GetAllAppsAsync();
 
-            List<WeChatAppViewModel> appViewModels = mapper.Map<List<WeChatApp>, List<WeChatAppViewModel>>(apps);
+            List<WxAppViewModel> appViewModels = mapper.Map<List<WxApp>, List<WxAppViewModel>>(apps);
 
             return View(appViewModels);
         }

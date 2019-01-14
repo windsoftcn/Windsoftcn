@@ -1,0 +1,10 @@
+.app-card-lg {
+  height: 240rpx;
+  width: 700rpx;
+}
+
+.app-img-lg { 
+  height: 100%;
+  width: 100%;
+  border-radius: 20rpx;
+}

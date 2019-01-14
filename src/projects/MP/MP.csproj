@@ -5,6 +5,13 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Migrations\20190111130858_Update04.cs" />
+    <Compile Remove="Migrations\20190111131216_Update05.cs" />
+    <Compile Remove="Migrations\20190111131257_Update04.cs" />
+    <Compile Remove="Migrations\20190111131600_Update04.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />

@@ -9,10 +9,10 @@ namespace MP.Services.Stats
     public class WeChatAppStatsService
     {
         private readonly IRedisProvider redisProvider;
-        private readonly WeChatAppService appService;
+        private readonly WxAppService appService;
 
         public WeChatAppStatsService(IRedisProvider redisProvider,
-            WeChatAppService appService)
+            WxAppService appService)
         {
             this.redisProvider = redisProvider ?? throw new ArgumentNullException(nameof(redisProvider));
             this.appService = appService ?? throw new ArgumentNullException(nameof(appService));
@@ -21,7 +21,7 @@ namespace MP.Services.Stats
 
         public async Task<bool> Startup(string appId)
         {
-
+            return false;
         }
     }
 }
